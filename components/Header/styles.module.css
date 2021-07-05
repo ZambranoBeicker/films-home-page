@@ -1,0 +1,30 @@
+.header {
+  padding: 0.5rem 0;
+}
+
+.burger-menu {
+  background: transparent;
+}
+
+.nav {
+  position: fixed;
+  width: 100%;
+  top: 10%;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  transition: 0.3s;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 30%;
+  justify-content: space-evenly;
+  margin: 0 auto;
+}
+
+.nav--hidden {
+  top: -35%;
+}
