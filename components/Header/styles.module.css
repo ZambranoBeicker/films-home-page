@@ -28,3 +28,20 @@
 .nav--hidden {
   top: -35%;
 }
+
+@media screen and (min-width: 1024px) {
+  .nav {
+    position: static;
+  }
+
+  .list {
+    flex-direction: row;
+    text-align: left;
+    height: auto;
+    justify-content: start;
+  }
+
+  .burger-menu {
+    display: none;
+  }
+}

@@ -13,7 +13,7 @@ export default function Header({ MenuIcon }) {
     <header className={styles.header}>
       <nav
         className={
-          !click ? styles.nav : styles.nav + " " + styles["nav--hidden"]
+          click ? styles.nav : styles.nav + " " + styles["nav--hidden"]
         }
       >
         <ul className={styles.list}>
