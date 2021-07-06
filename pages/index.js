@@ -3,7 +3,44 @@ import styles from "../styles/Home.module.css";
 import MenuIcon from "../public/menu.svg";
 import Header from "../components/Header";
 
-export default function Home() {
+import { useEffect } from "react";
+
+export async function getStaticProps() {
+  const responseUpcoming = await fetch(
+    process.env.API_URL + "movie/upcoming?api_key=" + process.env.API_KEY
+  );
+  const responseTopRated = await fetch(
+    process.env.API_URL + "movie/top_rated?api_key=" + process.env.API_KEY
+  );
+  const responsePopular = await fetch(
+    process.env.API_URL + "movie/popular?api_key=" + process.env.API_KEY
+  );
+  const responseLatest = await fetch(
+    process.env.API_URL + "movie/latest?api_key=" + process.env.API_KEY
+  );
+
+  const dataUpcoming = await responseUpcoming.json();
+  const dataTopRated = await responseTopRated.json();
+  const dataLatest = await responseLatest.json();
+  const dataPopular = await responsePopular.json();
+
+  return {
+    props: {
+      upcoming: dataUpcoming,
+      topRated: dataTopRated,
+      latest: dataLatest,
+      popular: dataPopular,
+    },
+  };
+}
+
+export default function Home({ upcoming, topRated, latest, popular }) {
+  useEffect(() => {
+    console.info("Upcoming: ", upcoming);
+    console.info("Top Rated: ", topRated);
+    console.info("Latest: ", latest);
+    console.info("Popular: ", popular);
+  });
   return (
     <div className={styles.container}>
       <Head>
