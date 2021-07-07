@@ -1,15 +1,35 @@
+.title {
+  font-size: 2.25rem;
+  margin-top: 50%;
+  position: relative;
+  z-index: 10;
+}
 .banner {
   max-width: 100%;
-  padding-top: 30%;
+  padding-top: 150%;
   position: absolute;
   left: 0;
   right: 0;
+}
+
+.banner:before {
+  content: "";
+  width: 100%;
+  position: absolute;
+  background: transparent;
+  max-height: 100%;
+  bottom: 0;
+  z-index: 10;
+  background: linear-gradient(0deg, black 2%, transparent 95%);
+  top: 0;
 }
 .container {
   padding: 0 0.5rem;
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
+  display: flex;
+  min-height: 100vh;
 }
 
 .main {
@@ -37,18 +57,6 @@
   flex-grow: 1;
 }
 
-.title a {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
-}
-
-.title,
 .description {
   text-align: center;
 }
@@ -79,4 +87,14 @@
   margin: 0;
   font-size: 1.25rem;
   line-height: 1.5;
+}
+
+@media screen and (min-width: 1024px) {
+  .title {
+    margin: auto 0;
+    font-size: 3rem;
+  }
+  .banner {
+    padding-top: 35%;
+  }
 }
