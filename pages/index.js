@@ -3,9 +3,9 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import MenuIcon from "../public/menu.svg";
 import Header from "../components/Header";
-import FilmCard from "../components/FilmCard";
+import FilmList from "../components/FilmList";
 
-import { useEffect, Fragment } from "react";
+import { useEffect } from "react";
 
 export async function getStaticProps() {
   const responseUpcoming = await fetch(
@@ -68,14 +68,8 @@ export default function Home({ upcoming, topRated, latest, popular }) {
           <h1>Title of the Movie</h1>
         </div>
       </div>
-      <div className={styles.list}>
-        {popular.results.map((film, index) => {
-          return (
-            <Fragment key={index}>
-              <FilmCard src={process.env.API_IMAGE_URL + film.poster_path} />
-            </Fragment>
-          );
-        })}
+      <div className={styles.container}>
+        <FilmList films={popular.results} />
       </div>
     </div>
   );
