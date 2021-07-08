@@ -3,8 +3,9 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import MenuIcon from "../public/menu.svg";
 import Header from "../components/Header";
+import FilmCard from "../components/FilmCard";
 
-import { useEffect } from "react";
+import { useEffect, Fragment } from "react";
 
 export async function getStaticProps() {
   const responseUpcoming = await fetch(
@@ -66,7 +67,15 @@ export default function Home({ upcoming, topRated, latest, popular }) {
         <div className={styles.title}>
           <h1>Title of the Movie</h1>
         </div>
-        <div>{/* TODO: Make the silder components inside this div */}</div>
+      </div>
+      <div className={styles.list}>
+        {popular.results.map((film, index) => {
+          return (
+            <Fragment key={index}>
+              <FilmCard src={process.env.API_IMAGE_URL + film.poster_path} />
+            </Fragment>
+          );
+        })}
       </div>
     </div>
   );
